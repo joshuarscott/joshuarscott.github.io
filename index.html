@@ -4,135 +4,154 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Joshua Scott's technical portfolio, featuring SunCompass computer vision research and Daedalus local AI infrastructure.">
-<title>Joshua Scott · Technical Portfolio</title>
+<title>Joshua Scott · Robotics and AI</title>
 <style>
 :root {
   color-scheme: light;
-  --paper: #f6f4ed;
-  --panel: #fdfbf6;
-  --ink: #232820;
-  --muted: #52584d;
-  --line: #d8d8ca;
-  --accent: #a1391b;
-  --signal: #ef9b72;
-  --dark: #26372d;
-  --serif: Georgia, "Times New Roman", serif;
+  --ink: #101e2c;
+  --muted: #47586b;
+  --line: #dce7ef;
+  --teal: #006f75;
+  --blue: #135bb5;
   --sans: "Inter", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-padding-top: 1.5rem; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.65 var(--sans); }
-a { color: inherit; text-underline-offset: .23em; }
-a:hover { color: var(--accent); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 var(--sans); }
+a { color: var(--blue); text-underline-offset: .22em; }
+a:hover { color: var(--teal); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 h1, h2, h3, p, figure { margin: 0; }
-h1, h2, h3 { line-height: 1.08; }
-h1, h2 { font-family: var(--serif); font-weight: 400; }
-h1 { font-size: clamp(3.4rem, 8vw, 7.1rem); letter-spacing: -.073em; }
-h2 { font-size: clamp(2.35rem, 5vw, 4.45rem); letter-spacing: -.058em; }
-h3 { font-size: 1.26rem; letter-spacing: -.033em; }
-img { max-width: 100%; height: auto; display: block; }
-.shell { max-width: 82rem; width: calc(100% - 8vw); margin-inline: auto; }
-.skip { position: absolute; left: 1rem; top: -5rem; background: var(--panel); padding: .65rem 1rem; z-index: 2; }
-.skip:focus { top: 1rem; }
-.topbar, .footer { display: flex; align-items: center; justify-content: space-between; gap: .85rem 2rem; flex-wrap: wrap; padding-block: 1.4rem; }
-.topbar { border-bottom: 1px solid var(--line); }
-.brand, nav a, .profiles a { text-decoration: none; }
-.brand { font-weight: 750; }
-nav, .profiles { display: flex; flex-wrap: wrap; gap: .35rem 1.45rem; font-size: .88rem; }
-.kicker, .label, .metric dt, .plate span { font: 600 .72rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: .085em; }
-.kicker, .label { color: var(--accent); }
-.hero { padding-block: clamp(2.4rem, 5.3vw, 4.8rem) clamp(2rem, 4vw, 3.2rem); display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(16rem, .65fr); align-items: end; gap: 2rem; }
-.hero h1 { margin: .65rem 0 1rem; }
-.hero .lead { max-width: 36rem; font-size: clamp(1.1rem, 2vw, 1.36rem); }
-.hero-aside { border-left: 2px solid var(--accent); padding: .3rem 0 .3rem 1.25rem; }
-.hero-aside p { margin: .3rem 0 .75rem; }
-.hero-aside a { font-weight: 650; font-size: .9rem; }
-.section-top { border-top: 1px solid var(--line); padding: 1.2rem 0 1.45rem; }
-.section-top h2 { margin-top: .45rem; }
-.work-grid { display: grid; grid-template-columns: 1.17fr 1fr; gap: 1.15rem; }
-.work-card { display: flex; flex-direction: column; min-width: 0; background: var(--panel); border: 1px solid var(--line); }
-.work-card a { font-weight: 700; }
-.work-card .card-body { padding: clamp(1rem, 2.8vw, 2rem); }
-.work-card h3 { margin: .35rem 0 .65rem; font: 400 clamp(1.85rem, 4vw, 3rem)/1.02 var(--serif); letter-spacing: -.055em; }
-.work-card p + p { margin-top: .9rem; }
-.card-art { min-height: 10.8rem; padding: 1.15rem clamp(1rem, 2.8vw, 2rem); display: flex; flex-direction: column; justify-content: center; gap: .7rem; background: var(--dark); color: var(--paper); }
-.card-art .label { color: var(--signal); }
-.yaw-result { display: flex; align-items: baseline; flex-wrap: wrap; gap: .2em; font: 400 clamp(2.4rem, 5vw, 4.2rem)/1 var(--serif); letter-spacing: -.055em; }
-.yaw-result .arrow { color: var(--signal); padding-inline: .14em; }
-.card-art small { color: #e2e4d9; font-size: .82rem; }
-.inspect { margin: .3rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; }
-.inspect li { border: 1px solid #91a398; padding: .33rem .55rem; font: .78rem/1.45 var(--mono); }
-.case { padding-block: clamp(3rem, 7vw, 6rem) 0; }
-.case-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.25rem 3rem; align-items: end; border-top: 1px solid var(--line); padding-top: 1.35rem; margin-bottom: 1.65rem; }
-.case-head h2 { margin: .45rem 0 0; }
-.case-head .intro { color: var(--muted); max-width: 45rem; }
-.case-head .intro a { display: inline-block; margin-top: .35rem; }
-.study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .78fr); gap: 1.3rem 2.5rem; align-items: start; border-top: 1px solid var(--line); padding-block: 1.4rem 1.85rem; }
-.study h3 { margin-bottom: .55rem; }
-.study p + p, .study dl + p { margin-top: .7rem; }
-.study p, .about-copy { max-width: 70ch; }
-.metric { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 1.1rem 0 .75rem; }
-.metric div { border-top: 2px solid var(--accent); padding-top: .5rem; }
-.metric dt { color: var(--muted); }
-.metric dd { margin: .25rem 0 0; font: 400 clamp(1.45rem, 3vw, 2.25rem)/1.05 var(--serif); letter-spacing: -.045em; }
-.media .plate { min-height: 13rem; display: grid; place-content: center; text-align: center; padding: 1rem; border: 1px dashed #9b9e8d; background: repeating-linear-gradient(135deg, #eeede4, #eeede4 9px, #e9e9df 9px, #e9e9df 10px); color: var(--muted); }
-.plate span { background: var(--paper); padding: .43rem .66rem; }
-.media figcaption { margin-top: .48rem; color: var(--muted); font-size: .82rem; }
-.system { margin: 0; background: var(--panel); border: 1px solid var(--line); }
-.system div { padding: .9rem 1.15rem; }
-.system div + div { border-top: 1px solid var(--line); }
-.system dt { font-weight: 750; }
-.system dd { margin: .15rem 0 0; color: var(--muted); font-size: .88rem; }
-.archive, .about { padding-top: clamp(3rem, 6vw, 5.2rem); }
-.archive-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-.archive-grid article { border-top: 1px solid var(--line); padding-top: .8rem; }
-.archive-grid h3 { margin: .15rem 0 .55rem; }
-.archive-grid p { color: var(--muted); font-size: .91rem; }
-.archive-grid .plate { min-height: 6rem; margin-top: .85rem; }
-.about { padding-bottom: 3rem; }
-.about-copy p + p { margin-top: .65rem; }
-.about-copy .profiles { margin-top: 1rem; }
-.profiles a { font-weight: 700; }
-.footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .83rem; }
-@media (max-width: 850px) {
-  .archive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
+h1, h2, h3 { line-height: 1.08; font-weight: 650; }
+h1 { font-size: clamp(2.85rem, 8vw, 6.5rem); letter-spacing: -.065em; }
+h2 { font-size: clamp(2rem, 4.7vw, 3.5rem); letter-spacing: -.055em; }
+h3 { font-size: clamp(1.2rem, 2.2vw, 1.45rem); letter-spacing: -.03em; }
+img { display: block; max-width: 100%; height: auto; }
+.shell { width: calc(100% - clamp(2rem, 9vw, 8rem)); max-width: 75rem; margin-inline: auto; }
+.skip { position: absolute; z-index: 2; top: .5rem; left: .5rem; background: #fff; padding: .65rem 1rem; transform: translateY(-160%); }
+.skip:focus { transform: translateY(0); }
+.site-header { border-bottom: 1px solid var(--line); }
+.topbar, .footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .3rem 2rem; }
+.topbar { min-height: 3.75rem; padding-block: .4rem; }
+.topbar nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0 clamp(.85rem, 2.7vw, 2rem); }
+.topbar a { display: inline-flex; align-items: center; min-height: 2.25rem; font-size: .875rem; font-weight: 550; text-decoration: none; }
+.topbar nav:first-child a { color: var(--ink); }
+.topbar nav:first-child .home { color: var(--teal); font-weight: 700; }
+.topbar a:hover { text-decoration: underline; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(3rem, 7vw, 6.5rem);
+  text-align: center;
 }
-@media (max-width: 680px) {
-  .hero, .case-head, .work-grid, .study { grid-template-columns: minmax(0, 1fr); }
-  .hero { gap: 1.4rem; }
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 32% 12%, #d9f6f1 0, transparent 63%),
+    radial-gradient(ellipse at 67% 12%, #dbeaff 0, transparent 65%);
+  mask-image: linear-gradient(#000 55%, transparent);
+}
+.hero h1 { color: #10293b; }
+.hero .lead { max-width: 39rem; margin: 1.15rem auto 0; color: var(--muted); font-size: clamp(1.05rem, 2.1vw, 1.35rem); line-height: 1.55; text-wrap: pretty; }
+.availability { margin-top: 1.15rem; color: var(--teal); font-weight: 650; font-size: .9rem; }
+.section-top { margin-bottom: 1.35rem; }
+#work .section-top { text-align: center; }
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; }
+.work-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  border: 1px solid #cde7ea;
+  border-radius: 1.5rem;
+  background: #f2fafa;
+}
+.daedalus-card { border-color: #d7e5f6; background: #f3f7fd; }
+.card-body { display: flex; flex: 1; flex-direction: column; align-items: start; padding: clamp(1.3rem, 3vw, 2.35rem); }
+.kicker, .label, .metric dt, .plate span { font-size: .76rem; font-weight: 700; line-height: 1.45; letter-spacing: .045em; }
+.kicker, .label { color: var(--teal); }
+.daedalus-card .kicker, .daedalus-card .label { color: var(--blue); }
+.work-card h3 { margin: .35rem 0 .65rem; font-size: clamp(1.95rem, 4vw, 3rem); letter-spacing: -.055em; }
+.work-card h3 + p { color: var(--muted); }
+.work-card .card-body p:last-child { margin-top: auto; padding-top: .95rem; }
+.work-card a { font-weight: 650; }
+.card-art {
+  display: flex;
+  min-height: 12.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 90%, #b9ebeb, transparent 75%), linear-gradient(155deg, #e9fcf8, #def3f7);
+}
+.daedalus-card .card-art {
+  background: radial-gradient(ellipse at 50% 95%, #c9dffc, transparent 75%), linear-gradient(155deg, #eff6ff, #e1edff);
+}
+.card-art small { color: var(--muted); font-size: .85rem; }
+.yaw-result { display: flex; align-items: baseline; justify-content: center; gap: .22em; font-size: clamp(1.95rem, 5.1vw, 3.55rem); font-weight: 650; line-height: 1; letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
+.yaw-result .arrow { color: var(--teal); }
+.inspect { display: flex; justify-content: center; flex-wrap: wrap; gap: .35rem; margin: .2rem 0; padding: 0; list-style: none; }
+.inspect li { padding: .35rem .65rem; background: #fafdff; border: 1px solid #b9d2ec; border-radius: .55rem; color: #234973; font-size: .77rem; font-weight: 600; }
+.case, .about { padding-top: clamp(2.85rem, 7vw, 5.7rem); }
+.case-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 1rem 2.5rem; margin-bottom: 1.45rem; }
+.case-head h2 { margin-top: .4rem; }
+.case-head .intro { color: var(--muted); }
+.case-head .intro a { display: inline-block; margin-top: .35rem; }
+.study { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: start; gap: 1.4rem 2.5rem; border-top: 1px solid var(--line); padding-block: 1.4rem; }
+.study h3 { margin-bottom: .65rem; }
+.study p + p, .about-copy p + p { margin-top: .72rem; }
+.study p, .about-copy { max-width: 70ch; }
+.metric { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin: 1rem 0; }
+.metric div { padding: .75rem; background: #eff8fa; border-radius: .75rem; }
+.metric dt { color: var(--teal); }
+.metric dd { margin: .3rem 0 0; font-size: clamp(1.15rem, 2.5vw, 1.8rem); font-weight: 650; line-height: 1.14; letter-spacing: -.04em; }
+.media .plate { display: grid; min-height: 13rem; place-content: center; padding: 1rem; border: 1px dashed #9abcc9; border-radius: 1rem; background: linear-gradient(145deg, #f2fbfb, #eef5fd); color: var(--muted); text-align: center; }
+.media figcaption { margin-top: .5rem; color: var(--muted); font-size: .85rem; }
+.system { margin: 0; overflow: hidden; background: #f3f7fd; border: 1px solid #d7e5f6; border-radius: 1rem; }
+.system div { padding: .9rem 1.15rem; }
+.system div + div { border-top: 1px solid #d7e5f6; }
+.system dt { font-weight: 700; }
+.system dd { margin: .15rem 0 0; color: var(--muted); font-size: .9rem; }
+.about { padding-bottom: 3rem; }
+.footer { border-top: 1px solid var(--line); padding-block: 1.25rem; color: var(--muted); font-size: .85rem; }
+@media (max-width: 720px) {
+  .work-grid, .case-head, .study { grid-template-columns: minmax(0, 1fr); }
   .card-art { min-height: 10.5rem; }
 }
-@media (max-width: 360px) {
-  .archive-grid { grid-template-columns: 1fr; }
-  nav { gap: .35rem 1rem; }
+@media (max-width: 540px) {
+  .topbar { justify-content: center; gap: 0 2rem; }
+  .topbar nav { justify-content: center; }
+  .topbar .profiles { flex-basis: 100%; border-top: 1px solid var(--line); }
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="topbar shell" id="top">
-  <a class="brand" href="#top">Joshua Scott</a>
-  <nav aria-label="Main navigation">
-    <a href="#work">Selected work</a>
-    <a href="#earlier">Earlier work</a>
-    <a href="#about">About</a>
-  </nav>
+<header class="site-header" id="top">
+  <div class="topbar shell">
+    <nav aria-label="Main navigation">
+      <a class="home" href="#top" aria-current="page">Home</a>
+      <a href="#work">Selected work</a>
+      <a href="#about">About</a>
+    </nav>
+    <nav class="profiles" aria-label="Profiles">
+      <a href="https://www.linkedin.com/in/joshua-scott-8a358119b/">LinkedIn</a>
+      <a href="https://github.com/j-scott862">GitHub</a>
+      <a href="https://huggingface.co/Sahelanthropus">Hugging Face</a>
+    </nav>
+  </div>
 </header>
 
 <main class="shell" id="main">
   <section class="hero" aria-labelledby="name">
-    <div>
-      <p class="kicker">Technical portfolio</p>
-      <h1 id="name">Joshua Scott</h1>
-      <p class="lead">I’m a University of Washington robotics graduate student working on camera orientation from outdoor images and building tools to inspect local AI assistants.</p>
-    </div>
-    <div class="hero-aside">
-      <p class="label">Summer 2027</p>
-      <p>Seeking a robotics internship.</p>
-      <a href="https://www.linkedin.com/in/joshua-scott-8a358119b/">Connect on LinkedIn</a>
-    </div>
+    <h1 id="name">Joshua Scott</h1>
+    <p class="lead">I’m a University of Washington robotics graduate student working on camera orientation from outdoor images and building tools to inspect local AI assistants.</p>
+    <p class="availability">Seeking a Summer 2027 robotics internship</p>
   </section>
 
   <section id="work" aria-labelledby="work-title">
@@ -148,10 +167,10 @@ nav, .profiles { display: flex; flex-wrap: wrap; gap: .35rem 1.45rem; font-size:
           <p class="kicker">Computer vision · Ongoing research</p>
           <h3>SunCompass</h3>
           <p>I evaluated whether the sun can provide a shared heading reference for a five-camera rig and built a pipeline to retrain the sun-direction model.</p>
-          <p><a href="#suncompass">Read the SunCompass case study ↓</a></p>
+          <p><a href="#suncompass">Read the SunCompass case study <span aria-hidden="true">↓</span></a></p>
         </div>
       </article>
-      <article class="work-card">
+      <article class="work-card daedalus-card">
         <div class="card-art">
           <p class="label">Operator controls</p>
           <ul class="inspect"><li>Memory history</li><li>Tool decisions</li><li>Execution records</li></ul>
@@ -161,7 +180,7 @@ nav, .profiles { display: flex; flex-wrap: wrap; gap: .35rem 1.45rem; font-size:
           <p class="kicker">Local AI · Paused prototype</p>
           <h3>Daedalus</h3>
           <p>I designed a local-first assistant with versioned project memory, policy checks on tool requests, and records of approved actions.</p>
-          <p><a href="#daedalus">Read the Daedalus case study ↓</a></p>
+          <p><a href="#daedalus">Read the Daedalus case study <span aria-hidden="true">↓</span></a></p>
         </div>
       </article>
     </div>
@@ -237,40 +256,11 @@ nav, .profiles { display: flex; flex-wrap: wrap; gap: .35rem 1.45rem; font-size:
     </div>
   </section>
 
-  <section class="archive" id="earlier" aria-labelledby="earlier-title">
-    <div class="section-top"><h2 id="earlier-title">Earlier work</h2></div>
-    <div class="archive-grid">
-      <article>
-        <h3>SO-101 Jetson Orin mount</h3>
-        <p>A modular, 3D-printed mount for onboard compute and battery power.</p>
-        <figure class="media"><div class="plate"><span>Mount photo pending</span></div></figure>
-      </article>
-      <article>
-        <h3>Robotic training ramp</h3>
-        <p>A passive ramp designed to vary object placement during robotic data collection.</p>
-        <figure class="media"><div class="plate"><span>Ramp photo pending</span></div></figure>
-      </article>
-      <article>
-        <h3>SO-101 assembly and setup</h3>
-        <p>Printed, assembled, and configured SO-101 arms for robotics experiments.</p>
-      </article>
-      <article>
-        <h3>Local GPT-OSS deployment</h3>
-        <p>Ran local inference through Ollama on a multi-GPU Linux workstation.</p>
-      </article>
-    </div>
-  </section>
-
   <section class="about" id="about" aria-labelledby="about-title">
     <div class="section-top"><h2 id="about-title">About</h2></div>
     <div class="about-copy">
       <p>I’m pursuing the M.S. in Technology Innovation on the Robotics track at the University of Washington. I’m interested in how robots use cameras to orient themselves outdoors and how to design experiments that show where those systems break down.</p>
       <p>At NVIDIA, I supported robotics and VR research teams in Seattle, ran site 3D printing, and collaborated with researchers on prototyping.</p>
-      <div class="profiles" aria-label="Profiles">
-        <a href="https://www.linkedin.com/in/joshua-scott-8a358119b/">LinkedIn</a>
-        <a href="https://github.com/j-scott862">GitHub</a>
-        <a href="https://huggingface.co/Sahelanthropus">Hugging Face</a>
-      </div>
     </div>
   </section>
 </main>
