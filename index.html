@@ -58,32 +58,108 @@ img { display: block; max-width: 100%; height: auto; }
 .case-head .summary { font-size: clamp(1rem, 2.1vw, 1.2rem); max-width: 36ch; }
 .daedalus .summary { color: #dceaf3; }
 .case-head a { display: inline-block; color: inherit; margin-top: .95rem; font-weight: 650; }
-.yaw-chart { background: #fff4d5; padding: clamp(1rem, 2.7vw, 1.55rem); }
-.yaw-chart figcaption { font-size: .9rem; font-weight: 700; }
-.yaw-chart dl { margin: .8rem 0 0; }
-.yaw-chart dl div { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: .24rem .65rem; margin-bottom: .55rem; font-size: .84rem; }
-.yaw-chart dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
-.yaw-chart dl div::after {
-  --bar-color: #945019;
-  content: "";
-  grid-column: 1 / -1;
-  height: .52rem;
-  background: linear-gradient(to right, var(--bar-color) var(--width), #ecdfbb var(--width));
+.suncompass .case-head .summary { max-width: 42ch; font-weight: 650; }
+.suncompass .purpose { max-width: 44ch; margin-top: .7rem; }
+.sun-reference {
+  background: #fff4d5;
+  padding: clamp(.85rem, 2.7vw, 1.55rem);
 }
-.yaw-chart dl div:last-child::after { --bar-color: var(--teal); }
-.chart-scale { display: flex; justify-content: space-between; font-size: .73rem; color: #5d4b2c; }
+.reference-diagram {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 2 / 1;
+}
+.sun-marker {
+  position: absolute;
+  z-index: 1;
+  top: 18%;
+  left: 50%;
+  width: 12%;
+  aspect-ratio: 1;
+  border: 2px solid #945019;
+  border-radius: 50%;
+  background: #ffcf5c;
+  transform: translate(-50%, -50%);
+}
+.reference-ray {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  height: 70%;
+  border-left: 2px dashed #945019;
+  transform-origin: top left;
+  transform: rotate(27.3deg);
+}
+.reference-ray.right { transform: rotate(-27.3deg); }
+.camera-view {
+  position: absolute;
+  inset: 0;
+  background: #b9d9cf;
+  clip-path: polygon(34% 80%, 0 37%, 0 83%);
+}
+.camera-view.right {
+  background: #eed495;
+  transform: scaleX(-1);
+}
+.camera-marker {
+  position: absolute;
+  top: 80%;
+  left: 34%;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #30210d;
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+}
+.camera-marker.right { left: 66%; }
+.reference-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  font-size: .82rem;
+  font-weight: 650;
+}
+.sun-reference figcaption {
+  margin-top: .7rem;
+  padding-top: .7rem;
+  border-top: 1px solid #d8bd82;
+  font-size: .9rem;
+}
+.sun-reference figcaption strong { display: block; }
 .project-role { max-width: 77ch; color: var(--muted); margin: 1.15rem 0; }
 .study { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: start; gap: 1.2rem 2.7rem; padding-block: 1.35rem; border-top: 1px solid var(--line); }
 .study h3 { margin-bottom: .6rem; }
 .study p + p, .about-copy p + p { margin-top: .72rem; }
 .study p, .about-copy { max-width: 70ch; }
 .daedalus .study { grid-template-columns: minmax(0, 77ch); }
-.metric { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0; }
-.metric div { padding: .7rem .85rem; background: #fcf5e2; border-left: 2px solid #c48a25; }
-.metric dt { color: #614519; font-size: .78rem; font-weight: 700; }
-.metric dd { margin: .2rem 0 0; font-size: clamp(1rem, 2.4vw, 1.55rem); font-weight: 650; letter-spacing: -.035em; }
-.media .plate { display: grid; min-height: 11rem; place-content: center; padding: 1rem; border: 1px dashed #b3a485; background: #faf8f1; color: #645434; text-align: center; font-size: .85rem; font-weight: 650; }
-.media figcaption { margin-top: .5rem; color: var(--muted); font-size: .82rem; }
+.suncompass .study {
+  grid-template-columns: minmax(0, .4fr) minmax(0, 1fr);
+}
+.suncompass .study h3 { margin-bottom: 0; }
+.suncompass .project-role { margin: 0 0 1rem; }
+.experiment + .experiment { margin-top: 1.3rem; }
+.experiment h4 { margin: 0 0 .35rem; font-size: 1rem; }
+.experiment details {
+  max-width: 70ch;
+  margin-top: .5rem;
+  padding: .1rem .8rem;
+  background: #fcf5e2;
+  border-left: 2px solid #c48a25;
+}
+.experiment summary {
+  align-content: center;
+  min-height: 2.75rem;
+  color: #614519;
+  font-size: .875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.experiment details p { padding-bottom: .75rem; font-size: .9rem; }
 .system { margin: 0; padding-left: 1.15rem; border-left: 2px solid #7fcfcf; }
 .system div { padding: .47rem 0; }
 .system dt { position: relative; font-weight: 700; }
@@ -93,8 +169,9 @@ img { display: block; max-width: 100%; height: auto; }
 .about h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
 .footer { padding-block: 1.15rem; color: var(--muted); font-size: .85rem; }
 @media (max-width: 720px) {
-  .hero, .case-head, .study, .about { grid-template-columns: minmax(0, 1fr); }
+  .hero, .case-head, .study, .suncompass .study, .about { grid-template-columns: minmax(0, 1fr); }
   .contact { justify-self: start; }
+  .suncompass .study { gap: .7rem; }
 }
 @media (max-width: 630px) {
   .topbar { gap: 0 1rem; }
@@ -137,56 +214,65 @@ img { display: block; max-width: 100%; height: auto; }
     <section class="case suncompass" id="suncompass" aria-labelledby="suncompass-title">
       <div class="case-head">
         <div>
-          <p class="category">Computer vision research</p>
+          <p class="category">Computer Vision &amp; Robotics Research · Ongoing</p>
           <h2 id="suncompass-title">SunCompass</h2>
-          <p class="summary">Estimating how far apart outdoor cameras point using the sun as a shared reference.</p>
+          <p class="summary">Can two cameras tell how they’re pointed when they see completely different scenes?</p>
+          <p class="purpose">Outdoor cameras can face different directions and share no landmarks. SunCompass explores whether the sun can give robots another way to tell how their cameras are oriented.</p>
           <a href="https://github.com/suncompass-org/suncompass">View SunCompass on GitHub <span aria-hidden="true">↗</span></a>
         </div>
-        <figure class="yaw-chart">
-          <figcaption>Mean absolute relative-yaw error</figcaption>
-          <dl>
-            <div style="--width: 81.8%">
-              <dt>Original crop</dt>
-              <dd>81.8°</dd>
-            </div>
-            <div style="--width: 59.7%">
-              <dt>Wider crop</dt>
-              <dd>59.7°</dd>
-            </div>
-          </dl>
-          <div class="chart-scale" aria-hidden="true"><span>0°</span><span>100°</span></div>
+        <figure class="sun-reference">
+          <div class="reference-diagram" aria-hidden="true">
+            <span class="camera-view"></span>
+            <span class="camera-view right"></span>
+            <span class="reference-ray"></span>
+            <span class="reference-ray right"></span>
+            <span class="sun-marker"></span>
+            <span class="camera-marker">A</span>
+            <span class="camera-marker right">B</span>
+          </div>
+          <div class="reference-labels" aria-hidden="true"><span>Camera A’s view</span><span>Camera B’s view</span></div>
+          <figcaption>
+            <strong>Two separate views, one shared reference.</strong>
+            Each camera estimates where the sun is relative to its own view. Comparing those estimates gives an estimate of how far apart the cameras point horizontally.
+          </figcaption>
         </figure>
       </div>
-      <p class="project-role">Contributor and GitHub organization co-owner. I defined the experiments and directed AI-assisted implementation of reproducible evaluation and training pipelines.</p>
 
-      <article class="study">
-        <div>
-          <h3>Relative yaw across five cameras</h3>
-          <p>SunCompass estimates the sun’s direction from one outdoor image. For synchronized views, the difference between the sun’s estimated azimuth in two camera frames gives an estimate of their relative yaw, even when their views do not overlap. Capture time and location can also give a reference for heading relative to true north.</p>
-          <p>I compared the original center crop with a wider crop while keeping the model weights fixed. The evaluation covered 63,030 images from 63 WayveScenes101 driving scenes, and 126,060 camera-pair comparisons. I used camera poses reconstructed with COLMAP as the reference.</p>
-          <p>Mean error fell 27%, with improvements in 54 of 63 scenes, though the remaining error is substantial. Ongoing work aims to improve accuracy across outdoor conditions.</p>
-        </div>
-        <figure class="media">
-          <div class="plate"><span>Relative-yaw GIF pending</span></div>
-          <figcaption>Planned demo showing synchronized camera views and predicted relative yaw.</figcaption>
-        </figure>
-      </article>
+      <div class="study">
+        <h3>The research challenge</h3>
+        <p>When clouds, buildings, or trees hide the sun, can a model infer its direction from shadows and reflections? We’re studying whether those clues can support more reliable estimates in unfamiliar outdoor settings.</p>
+      </div>
 
-      <article class="study">
+      <div class="study">
+        <h3>My contributions &amp; findings</h3>
         <div>
-          <h3>Model retraining on a single-camera AMOS pilot</h3>
-          <p>I built a pipeline for repeatable training and held-out evaluation. I compared two letterboxed input sizes over 50 epochs on the same GPU, using labels derived from camera calibration.</p>
-          <dl class="metric">
-            <div><dt>1024 × 1024 input</dt><dd>3 h 57 min</dd></div>
-            <div><dt>612 × 612 input</dt><dd>1 h 26 min</dd></div>
-          </dl>
-          <p>The smaller input had similar median error against held-out labels in this single-camera pilot. The pilot measured sun-direction prediction on that camera. The driving-scene experiment above measured relative yaw between cameras.</p>
+          <p class="project-role">On this collaborative project, I design experiments, evaluate predictions, and build reproducible training workflows with AI-assisted implementation.</p>
+          <div class="experiment">
+            <h4>Keeping more of the image</h4>
+            <p>I tested a wider image crop with the same model. Average camera-to-camera orientation error fell <strong>27% across 63 driving scenes</strong>. The remaining error was substantial. The experiment showed me how much image preparation can affect performance even when the model stays fixed.</p>
+            <details>
+              <summary>Driving-scene experiment details</summary>
+              <p>Mean absolute error in the horizontal angle between cameras fell from 81.8° to 59.7°, improving in 54 of 63 scenes. The evaluation used 63,030 WayveScenes101 images from five cameras and 126,060 camera-pair comparisons, with camera orientations reconstructed using COLMAP as the reference.</p>
+            </details>
+          </div>
+          <div class="experiment">
+            <h4>Testing image resolution</h4>
+            <p>I built a repeatable training and evaluation pipeline and tested it on one fixed outdoor webcam. Smaller images cut training time while yielding similar median sun-direction error on held-out images from that same camera.</p>
+            <details>
+              <summary>Webcam pilot details</summary>
+              <p>In the single-camera AMOS pilot, 612 × 612 inputs took 1 h 26 min to train, compared with 3 h 57 min at 1024 × 1024. Both runs used 50 epochs on the same GPU. I used camera calibration to label the sun’s direction.</p>
+            </details>
+          </div>
         </div>
-        <figure class="media">
-          <div class="plate"><span>Sun-direction GIF pending</span></div>
-          <figcaption>Planned demo showing predicted sun direction across outdoor frames.</figcaption>
-        </figure>
-      </article>
+      </div>
+
+      <div class="study">
+        <h3>What I’m investigating next</h3>
+        <div>
+          <p><strong>In progress.</strong> We’re designing tests on entirely unseen cameras to see whether training across varied scenes, lighting, and seasons helps the model use sunlight cues beyond familiar settings.</p>
+          <p><strong>Future goal.</strong> Test whether better sun-direction estimates improve camera-to-camera orientation.</p>
+        </div>
+      </div>
     </section>
 
     <section class="case daedalus" id="daedalus" aria-labelledby="daedalus-title">
