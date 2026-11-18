@@ -8,124 +8,96 @@
 <style>
 :root {
   color-scheme: light;
-  --ink: #101e2c;
-  --muted: #47586b;
-  --line: #dce7ef;
-  --teal: #006f75;
-  --blue: #135bb5;
+  --ink: #14282f;
+  --muted: #425860;
+  --line: #d5e0e2;
+  --teal: #00696a;
+  --blue: #164e9c;
   --sans: "Inter", system-ui, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-top: 1.5rem; }
+html { scroll-padding-top: 1.25rem; }
 body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 var(--sans); }
-a { color: var(--blue); text-underline-offset: .22em; }
+a { color: var(--blue); text-underline-offset: .23em; }
 a:hover { color: var(--teal); }
-:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 h1, h2, h3, p, figure { margin: 0; }
-h1, h2, h3 { line-height: 1.08; font-weight: 650; }
-h1 { font-size: clamp(2.85rem, 8vw, 6.5rem); letter-spacing: -.065em; }
-h2 { font-size: clamp(2rem, 4.7vw, 3.5rem); letter-spacing: -.055em; }
-h3 { font-size: clamp(1.2rem, 2.2vw, 1.45rem); letter-spacing: -.03em; }
+h1, h2, h3 { font-weight: 650; line-height: 1.1; }
+h1 { font-size: clamp(2.7rem, 6.5vw, 5.5rem); letter-spacing: -.065em; }
+h2 { font-size: clamp(2.25rem, 5.5vw, 4.5rem); letter-spacing: -.06em; }
+h3 { font-size: clamp(1.15rem, 2.3vw, 1.5rem); letter-spacing: -.025em; }
 img { display: block; max-width: 100%; height: auto; }
-.shell { width: calc(100% - clamp(2rem, 9vw, 8rem)); max-width: 75rem; margin-inline: auto; }
+.shell { width: calc(100% - clamp(2rem, 9vw, 8rem)); max-width: 72rem; margin-inline: auto; }
 .skip { position: absolute; z-index: 2; top: .5rem; left: .5rem; background: #fff; padding: .65rem 1rem; transform: translateY(-160%); }
 .skip:focus { transform: translateY(0); }
-.site-header { border-bottom: 1px solid var(--line); }
-.topbar, .footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .3rem 2rem; }
-.topbar { min-height: 3.75rem; padding-block: .4rem; }
-.topbar nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0 clamp(.85rem, 2.7vw, 2rem); }
-.topbar a { display: inline-flex; align-items: center; min-height: 2.25rem; font-size: .875rem; font-weight: 550; text-decoration: none; }
+.site-header { border-top: 4px solid var(--teal); border-bottom: 1px solid var(--line); }
+.topbar, .footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .2rem 1.5rem; }
+.topbar { min-height: 3.5rem; padding-block: .25rem; }
+.topbar nav { display: flex; flex-wrap: wrap; align-items: center; column-gap: clamp(.7rem, 2.5vw, 1.65rem); }
+.topbar a { display: inline-flex; min-height: 2.75rem; align-items: center; font-size: .875rem; font-weight: 600; text-decoration: none; }
 .topbar nav:first-child a { color: var(--ink); }
-.topbar nav:first-child .home { color: var(--teal); font-weight: 700; }
+.topbar nav:first-child .home { color: var(--teal); }
 .topbar a:hover { text-decoration: underline; }
-.hero {
-  position: relative;
-  isolation: isolate;
-  padding-block: clamp(3rem, 7vw, 6.5rem);
-  text-align: center;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 32% 12%, #d9f6f1 0, transparent 63%),
-    radial-gradient(ellipse at 67% 12%, #dbeaff 0, transparent 65%);
-  mask-image: linear-gradient(#000 55%, transparent);
-}
-.hero h1 { color: #10293b; }
-.hero .lead { max-width: 39rem; margin: 1.15rem auto 0; color: var(--muted); font-size: clamp(1.05rem, 2.1vw, 1.35rem); line-height: 1.55; text-wrap: pretty; }
-.availability { margin-top: 1.15rem; color: var(--teal); font-weight: 650; font-size: .9rem; }
-.section-top { margin-bottom: 1.35rem; }
-#work .section-top { text-align: center; }
-.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; }
-.work-card {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-width: 0;
-  border: 1px solid #cde7ea;
-  border-radius: 1.5rem;
-  background: #f2fafa;
-}
-.daedalus-card { border-color: #d7e5f6; background: #f3f7fd; }
-.card-body { display: flex; flex: 1; flex-direction: column; align-items: start; padding: clamp(1.3rem, 3vw, 2.35rem); }
-.kicker, .label, .metric dt, .plate span { font-size: .76rem; font-weight: 700; line-height: 1.45; letter-spacing: .045em; }
-.kicker, .label { color: var(--teal); }
-.daedalus-card .kicker, .daedalus-card .label { color: var(--blue); }
-.work-card h3 { margin: .35rem 0 .65rem; font-size: clamp(1.95rem, 4vw, 3rem); letter-spacing: -.055em; }
-.work-card h3 + p { color: var(--muted); }
-.work-card .card-body p:last-child { margin-top: auto; padding-top: .95rem; }
-.work-card a { font-weight: 650; }
-.card-art {
-  display: flex;
-  min-height: 12.5rem;
-  flex-direction: column;
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 1.25rem 3rem; padding-block: clamp(2.25rem, 5.7vw, 4.6rem) clamp(2.1rem, 4.5vw, 3.4rem); }
+.hero .lead { max-width: 36rem; margin-top: .65rem; color: var(--muted); font-size: clamp(1rem, 2vw, 1.26rem); text-wrap: pretty; }
+.contact { border-left: 2px solid #38a9a2; padding-left: 1rem; color: var(--muted); font-size: .875rem; overflow-wrap: anywhere; }
+.contact a { display: inline-block; margin-top: .3rem; font-weight: 650; }
+.projects { display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
+.case-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   align-items: center;
-  justify-content: center;
-  gap: .65rem;
-  padding: 1.4rem 1rem;
-  text-align: center;
-  background: radial-gradient(ellipse at 50% 90%, #b9ebeb, transparent 75%), linear-gradient(155deg, #e9fcf8, #def3f7);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(1.25rem, 4.3vw, 3.25rem);
 }
-.daedalus-card .card-art {
-  background: radial-gradient(ellipse at 50% 95%, #c9dffc, transparent 75%), linear-gradient(155deg, #eff6ff, #e1edff);
+.suncompass .case-head { color: #30210d; background: #ffcf5c; }
+.daedalus .case-head { color: #fff; background: #15354e; }
+.category { font-size: .85rem; font-weight: 650; }
+.daedalus .category { color: #92e0d9; }
+.case-head h2 { margin: .25rem 0 .7rem; }
+.case-head .summary { font-size: clamp(1rem, 2.1vw, 1.2rem); max-width: 36ch; }
+.daedalus .summary { color: #dceaf3; }
+.case-head a { display: inline-block; color: inherit; margin-top: .95rem; font-weight: 650; }
+.yaw-chart { background: #fff4d5; padding: clamp(1rem, 2.7vw, 1.55rem); }
+.yaw-chart figcaption { font-size: .9rem; font-weight: 700; }
+.yaw-chart dl { margin: .8rem 0 0; }
+.yaw-chart dl div { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: .24rem .65rem; margin-bottom: .55rem; font-size: .84rem; }
+.yaw-chart dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+.yaw-chart dl div::after {
+  --bar-color: #945019;
+  content: "";
+  grid-column: 1 / -1;
+  height: .52rem;
+  background: linear-gradient(to right, var(--bar-color) var(--width), #ecdfbb var(--width));
 }
-.card-art small { color: var(--muted); font-size: .85rem; }
-.yaw-result { display: flex; align-items: baseline; justify-content: center; gap: .22em; font-size: clamp(1.95rem, 5.1vw, 3.55rem); font-weight: 650; line-height: 1; letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
-.yaw-result .arrow { color: var(--teal); }
-.inspect { display: flex; justify-content: center; flex-wrap: wrap; gap: .35rem; margin: .2rem 0; padding: 0; list-style: none; }
-.inspect li { padding: .35rem .65rem; background: #fafdff; border: 1px solid #b9d2ec; border-radius: .55rem; color: #234973; font-size: .77rem; font-weight: 600; }
-.case, .about { padding-top: clamp(2.85rem, 7vw, 5.7rem); }
-.case-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 1rem 2.5rem; margin-bottom: 1.45rem; }
-.case-head h2 { margin-top: .4rem; }
-.case-head .intro { color: var(--muted); }
-.case-head .intro a { display: inline-block; margin-top: .35rem; }
-.study { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: start; gap: 1.4rem 2.5rem; border-top: 1px solid var(--line); padding-block: 1.4rem; }
-.study h3 { margin-bottom: .65rem; }
+.yaw-chart dl div:last-child::after { --bar-color: var(--teal); }
+.chart-scale { display: flex; justify-content: space-between; font-size: .73rem; color: #5d4b2c; }
+.project-role { max-width: 77ch; color: var(--muted); margin: 1.15rem 0; }
+.study { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: start; gap: 1.2rem 2.7rem; padding-block: 1.35rem; border-top: 1px solid var(--line); }
+.study h3 { margin-bottom: .6rem; }
 .study p + p, .about-copy p + p { margin-top: .72rem; }
 .study p, .about-copy { max-width: 70ch; }
-.metric { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin: 1rem 0; }
-.metric div { padding: .75rem; background: #eff8fa; border-radius: .75rem; }
-.metric dt { color: var(--teal); }
-.metric dd { margin: .3rem 0 0; font-size: clamp(1.15rem, 2.5vw, 1.8rem); font-weight: 650; line-height: 1.14; letter-spacing: -.04em; }
-.media .plate { display: grid; min-height: 13rem; place-content: center; padding: 1rem; border: 1px dashed #9abcc9; border-radius: 1rem; background: linear-gradient(145deg, #f2fbfb, #eef5fd); color: var(--muted); text-align: center; }
-.media figcaption { margin-top: .5rem; color: var(--muted); font-size: .85rem; }
-.system { margin: 0; overflow: hidden; background: #f3f7fd; border: 1px solid #d7e5f6; border-radius: 1rem; }
-.system div { padding: .9rem 1.15rem; }
-.system div + div { border-top: 1px solid #d7e5f6; }
-.system dt { font-weight: 700; }
-.system dd { margin: .15rem 0 0; color: var(--muted); font-size: .9rem; }
-.about { padding-bottom: 3rem; }
-.footer { border-top: 1px solid var(--line); padding-block: 1.25rem; color: var(--muted); font-size: .85rem; }
+.daedalus .study { grid-template-columns: minmax(0, 77ch); }
+.metric { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0; }
+.metric div { padding: .7rem .85rem; background: #fcf5e2; border-left: 2px solid #c48a25; }
+.metric dt { color: #614519; font-size: .78rem; font-weight: 700; }
+.metric dd { margin: .2rem 0 0; font-size: clamp(1rem, 2.4vw, 1.55rem); font-weight: 650; letter-spacing: -.035em; }
+.media .plate { display: grid; min-height: 11rem; place-content: center; padding: 1rem; border: 1px dashed #b3a485; background: #faf8f1; color: #645434; text-align: center; font-size: .85rem; font-weight: 650; }
+.media figcaption { margin-top: .5rem; color: var(--muted); font-size: .82rem; }
+.system { margin: 0; padding-left: 1.15rem; border-left: 2px solid #7fcfcf; }
+.system div { padding: .47rem 0; }
+.system dt { position: relative; font-weight: 700; }
+.system dt::before { content: ""; position: absolute; left: calc(-1.15rem - 5px); top: .58em; width: 8px; height: 8px; background: #92e0d9; border-radius: 50%; }
+.system dd { margin: .1rem 0 0; color: #dceaf3; font-size: .88rem; }
+.about { display: grid; grid-template-columns: minmax(8rem, .4fr) minmax(0, 1fr); gap: 1rem 2.5rem; margin-top: clamp(2.1rem, 5vw, 4rem); padding-block: clamp(1.65rem, 4vw, 2.8rem); border-block: 1px solid var(--line); }
+.about h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.footer { padding-block: 1.15rem; color: var(--muted); font-size: .85rem; }
 @media (max-width: 720px) {
-  .work-grid, .case-head, .study { grid-template-columns: minmax(0, 1fr); }
-  .card-art { min-height: 10.5rem; }
+  .hero, .case-head, .study, .about { grid-template-columns: minmax(0, 1fr); }
+  .contact { justify-self: start; }
 }
-@media (max-width: 540px) {
-  .topbar { justify-content: center; gap: 0 2rem; }
-  .topbar nav { justify-content: center; }
+@media (max-width: 630px) {
+  .topbar { gap: 0 1rem; }
   .topbar .profiles { flex-basis: 100%; border-top: 1px solid var(--line); }
 }
 </style>
@@ -136,12 +108,13 @@ img { display: block; max-width: 100%; height: auto; }
   <div class="topbar shell">
     <nav aria-label="Main navigation">
       <a class="home" href="#top" aria-current="page">Home</a>
-      <a href="#work">Selected work</a>
+      <a href="#suncompass">SunCompass</a>
+      <a href="#daedalus">Daedalus</a>
       <a href="#about">About</a>
     </nav>
     <nav class="profiles" aria-label="Profiles">
       <a href="https://www.linkedin.com/in/joshua-scott-8a358119b/">LinkedIn</a>
-      <a href="https://github.com/j-scott862">GitHub</a>
+      <a href="https://github.com/joshuarscott">GitHub</a>
       <a href="https://huggingface.co/Sahelanthropus">Hugging Face</a>
     </nav>
   </div>
@@ -149,112 +122,97 @@ img { display: block; max-width: 100%; height: auto; }
 
 <main class="shell" id="main">
   <section class="hero" aria-labelledby="name">
-    <h1 id="name">Joshua Scott</h1>
-    <p class="lead">I’m a University of Washington robotics graduate student working on camera orientation from outdoor images and building tools to inspect local AI assistants.</p>
-    <p class="availability">Seeking a Summer 2027 robotics internship</p>
+    <div>
+      <h1 id="name">Joshua Scott</h1>
+      <p class="lead">I’m a University of Washington robotics graduate student working on camera orientation from outdoor images and building tools to inspect local AI assistants.</p>
+    </div>
+    <div class="contact">
+      <p>Seeking a Summer 2027 robotics internship</p>
+      <a href="mailto:joshscott862@gmail.com">joshscott862@gmail.com</a>
+    </div>
   </section>
 
-  <section id="work" aria-labelledby="work-title">
-    <div class="section-top"><h2 id="work-title">Selected work</h2></div>
-    <div class="work-grid">
-      <article class="work-card">
-        <div class="card-art">
-          <p class="label">Relative-yaw evaluation</p>
-          <p class="yaw-result">81.8° <span class="arrow" aria-label="to">→</span> 59.7°</p>
-          <small>Mean absolute error with a wider center crop</small>
+  <div class="projects" id="work">
+
+    <section class="case suncompass" id="suncompass" aria-labelledby="suncompass-title">
+      <div class="case-head">
+        <div>
+          <p class="category">Computer vision research</p>
+          <h2 id="suncompass-title">SunCompass</h2>
+          <p class="summary">Estimating how far apart outdoor cameras point using the sun as a shared reference.</p>
+          <a href="https://github.com/suncompass-org/suncompass">View SunCompass on GitHub <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="card-body">
-          <p class="kicker">Computer vision · Ongoing research</p>
-          <h3>SunCompass</h3>
-          <p>I evaluated whether the sun can provide a shared heading reference for a five-camera rig and built a pipeline to retrain the sun-direction model.</p>
-          <p><a href="#suncompass">Read the SunCompass case study <span aria-hidden="true">↓</span></a></p>
+        <figure class="yaw-chart">
+          <figcaption>Mean absolute relative-yaw error</figcaption>
+          <dl>
+            <div style="--width: 81.8%">
+              <dt>Original crop</dt>
+              <dd>81.8°</dd>
+            </div>
+            <div style="--width: 59.7%">
+              <dt>Wider crop</dt>
+              <dd>59.7°</dd>
+            </div>
+          </dl>
+          <div class="chart-scale" aria-hidden="true"><span>0°</span><span>100°</span></div>
+        </figure>
+      </div>
+      <p class="project-role">Contributor and GitHub organization co-owner. I defined the experiments and directed AI-assisted implementation of reproducible evaluation and training pipelines.</p>
+
+      <article class="study">
+        <div>
+          <h3>Relative yaw across five cameras</h3>
+          <p>SunCompass estimates the sun’s direction from one outdoor image. For synchronized views, the difference between the sun’s estimated azimuth in two camera frames gives an estimate of their relative yaw, even when their views do not overlap. Capture time and location can also give a reference for heading relative to true north.</p>
+          <p>I compared the original center crop with a wider crop while keeping the model weights fixed. The evaluation covered 63,030 images from 63 WayveScenes101 driving scenes, and 126,060 camera-pair comparisons. I used camera poses reconstructed with COLMAP as the reference.</p>
+          <p>Mean error fell 27%, with improvements in 54 of 63 scenes, though the remaining error is substantial. Ongoing work aims to improve accuracy across outdoor conditions.</p>
         </div>
+        <figure class="media">
+          <div class="plate"><span>Relative-yaw GIF pending</span></div>
+          <figcaption>Planned demo showing synchronized camera views and predicted relative yaw.</figcaption>
+        </figure>
       </article>
-      <article class="work-card daedalus-card">
-        <div class="card-art">
-          <p class="label">Operator controls</p>
-          <ul class="inspect"><li>Memory history</li><li>Tool decisions</li><li>Execution records</li></ul>
-          <small>Inspect what the assistant remembered and did</small>
+
+      <article class="study">
+        <div>
+          <h3>Model retraining on a single-camera AMOS pilot</h3>
+          <p>I built a pipeline for repeatable training and held-out evaluation. I compared two letterboxed input sizes over 50 epochs on the same GPU, using labels derived from camera calibration.</p>
+          <dl class="metric">
+            <div><dt>1024 × 1024 input</dt><dd>3 h 57 min</dd></div>
+            <div><dt>612 × 612 input</dt><dd>1 h 26 min</dd></div>
+          </dl>
+          <p>The smaller input had similar median error against held-out labels in this single-camera pilot. The pilot measured sun-direction prediction on that camera. The driving-scene experiment above measured relative yaw between cameras.</p>
         </div>
-        <div class="card-body">
-          <p class="kicker">Local AI · Paused prototype</p>
-          <h3>Daedalus</h3>
-          <p>I designed a local-first assistant with versioned project memory, policy checks on tool requests, and records of approved actions.</p>
-          <p><a href="#daedalus">Read the Daedalus case study <span aria-hidden="true">↓</span></a></p>
-        </div>
+        <figure class="media">
+          <div class="plate"><span>Sun-direction GIF pending</span></div>
+          <figcaption>Planned demo showing predicted sun direction across outdoor frames.</figcaption>
+        </figure>
       </article>
-    </div>
-  </section>
+    </section>
 
-  <section class="case" id="suncompass" aria-labelledby="suncompass-title">
-    <div class="case-head">
-      <div>
-        <p class="kicker">Computer vision research</p>
-        <h2 id="suncompass-title">SunCompass</h2>
-      </div>
-      <div class="intro">
-        <p>Contributor and GitHub organization co-owner. I defined the experiments and directed AI-assisted implementation of reproducible evaluation and training pipelines.</p>
-        <a href="https://github.com/suncompass-org/suncompass">SunCompass on GitHub</a>
-      </div>
-    </div>
-
-    <article class="study">
-      <div>
-        <h3>Relative yaw across five cameras</h3>
-        <p>SunCompass estimates the sun’s direction from one outdoor image. For synchronized views, the difference between the sun’s estimated azimuth in two camera frames gives an estimate of their relative yaw, even when their views do not overlap. Capture time and location can also give a reference for heading relative to true north.</p>
-        <p>I compared the original center crop with a wider crop while keeping the model weights fixed. The evaluation covered 63,030 images from 63 WayveScenes101 driving scenes, and 126,060 camera-pair comparisons. I used camera poses reconstructed with COLMAP as the reference.</p>
-        <dl class="metric">
-          <div><dt>Mean absolute yaw error</dt><dd>81.8° → 59.7°</dd></div>
-          <div><dt>Reduction in mean error</dt><dd>27%</dd></div>
+    <section class="case daedalus" id="daedalus" aria-labelledby="daedalus-title">
+      <div class="case-head">
+        <div>
+          <p class="category">Local AI infrastructure</p>
+          <h2 id="daedalus-title">Daedalus</h2>
+          <p class="summary">A local-first assistant that lets operators inspect its memory, tool decisions, and approved actions.</p>
+        </div>
+        <dl class="system">
+          <div><dt>Project memory</dt><dd>Versioned records scoped to a project.</dd></div>
+          <div><dt>Tool policy</dt><dd>Decisions that explain why a request was allowed or blocked.</dd></div>
+          <div><dt>Execution record</dt><dd>A record of what happened after an approved request.</dd></div>
         </dl>
-        <p>Error fell in 54 of 63 scenes, though the remaining error is substantial. Ongoing work aims to improve accuracy across outdoor conditions.</p>
       </div>
-      <figure class="media">
-        <div class="plate"><span>Relative-yaw GIF pending</span></div>
-        <figcaption>Planned demo showing synchronized camera views and predicted relative yaw.</figcaption>
-      </figure>
-    </article>
+      <p class="project-role">Personal prototype. I defined the architecture, directed AI-assisted implementation, and evaluated memory retrieval and access boundaries.</p>
+      <div class="study">
+        <div>
+          <h3>Making assistant behavior inspectable</h3>
+          <p>Daedalus started as a chat interface for Ollama. I expanded it to let operators inspect what the assistant remembered for a project, why policy allowed or blocked a tool request, and what happened after approval.</p>
+          <p>I evaluated cross-chat retrieval, conflicting preferences, and project access boundaries. Failures informed revisions to how the assistant manages state. The project paused after verifying a release profile that can inspect existing state and blocks tool dispatch, process launches, file writes, and external delivery.</p>
+        </div>
+      </div>
+    </section>
 
-    <article class="study">
-      <div>
-        <h3>Model retraining on a single-camera AMOS pilot</h3>
-        <p>I built a pipeline for repeatable training and held-out evaluation. I compared two letterboxed input sizes over 50 epochs on the same GPU, using labels derived from camera calibration.</p>
-        <dl class="metric">
-          <div><dt>1024 × 1024 input</dt><dd>3 h 57 min</dd></div>
-          <div><dt>612 × 612 input</dt><dd>1 h 26 min</dd></div>
-        </dl>
-        <p>The smaller input had similar median error against held-out labels in this single-camera pilot. The pilot measured sun-direction prediction on that camera. The driving-scene experiment above measured relative yaw between cameras.</p>
-      </div>
-      <figure class="media">
-        <div class="plate"><span>Sun-direction GIF pending</span></div>
-        <figcaption>Planned demo showing predicted sun direction across outdoor frames.</figcaption>
-      </figure>
-    </article>
-  </section>
-
-  <section class="case" id="daedalus" aria-labelledby="daedalus-title">
-    <div class="case-head">
-      <div>
-        <p class="kicker">Local AI infrastructure</p>
-        <h2 id="daedalus-title">Daedalus</h2>
-      </div>
-      <div class="intro">
-        <p>Personal prototype. I defined the architecture, directed AI-assisted implementation, and evaluated memory retrieval and access boundaries.</p>
-      </div>
-    </div>
-    <div class="study">
-      <div>
-        <h3>Making assistant behavior inspectable</h3>
-        <p>Daedalus started as a chat interface for Ollama. I expanded it to let operators inspect what the assistant remembered for a project, why policy allowed or blocked a tool request, and what happened after approval.</p>
-        <p>I evaluated cross-chat retrieval, conflicting preferences, and project access boundaries. Failures informed revisions to how the assistant manages state. The project paused after verifying a release profile that can inspect existing state and blocks tool dispatch, process launches, file writes, and external delivery.</p>
-      </div>
-      <dl class="system">
-        <div><dt>Project memory</dt><dd>Versioned records scoped to a project.</dd></div>
-        <div><dt>Tool policy</dt><dd>Decisions that explain why a request was allowed or blocked.</dd></div>
-        <div><dt>Execution record</dt><dd>A record of what happened after an approved request.</dd></div>
-      </dl>
-    </div>
-  </section>
+  </div>
 
   <section class="about" id="about" aria-labelledby="about-title">
     <div class="section-top"><h2 id="about-title">About</h2></div>
