@@ -44,6 +44,7 @@ img { display: block; max-width: 100%; height: auto; }
 .contact a { display: inline-block; margin-top: .3rem; font-weight: 650; }
 .projects { display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
 .case-head {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   align-items: center;
@@ -52,6 +53,16 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .suncompass .case-head { color: #30210d; background: #ffcf5c; }
 .daedalus .case-head { color: #fff; background: #15354e; }
+.project-toggle { position: absolute; inset: 0; z-index: 1; width: 100%; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.project-toggle:hover { background: rgb(255 255 255 / 5%); }
+.project-toggle:focus-visible { outline: 3px solid currentColor; outline-offset: -6px; }
+.case-head a { position: relative; z-index: 2; }
+.toggle-hint { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: .6rem; padding-top: .9rem; border-top: 1px solid rgb(48 33 13 / 25%); font-size: .875rem; font-weight: 650; }
+.toggle-hint::after { content: ""; width: .5rem; height: .5rem; border-right: 2px solid; border-bottom: 2px solid; transform: translateY(-.15rem) rotate(45deg); }
+.case-head:has([aria-expanded="true"]) .toggle-hint::after { transform: translateY(.15rem) rotate(225deg); }
+.daedalus .toggle-hint { color: #92e0d9; border-color: rgb(146 224 217 / 35%); }
+[hidden] { display: none !important; }
+.profile-photo { width: 11rem; height: 11rem; border-radius: 50%; object-fit: cover; object-position: 50% 58%; margin-top: 1.25rem; }
 .category { font-size: .85rem; font-weight: 650; }
 .daedalus .category { color: #92e0d9; }
 .case-head h2 { margin: .25rem 0 .7rem; }
@@ -195,7 +206,7 @@ img { display: block; max-width: 100%; height: auto; }
   <section class="hero" aria-labelledby="name">
     <div>
       <h1 id="name">Joshua Scott</h1>
-      <p class="lead">I’m a University of Washington robotics graduate student working on camera orientation from outdoor images and designing a local AI system for long-running tasks.</p>
+      <p class="lead">I’m a University of Washington MSITI student focusing on robotics and machine learning. I am working on camera orientation from outdoor images and designing a local AI system for long-running tasks.</p>
     </div>
     <div class="contact">
       <p>Seeking a Summer 2027 robotics internship</p>
@@ -207,6 +218,7 @@ img { display: block; max-width: 100%; height: auto; }
 
     <section class="case suncompass" id="suncompass" aria-labelledby="suncompass-title">
       <div class="case-head">
+        <button class="project-toggle" type="button" aria-expanded="false" aria-controls="suncompass-details" aria-labelledby="suncompass-title suncompass-toggle-label"></button>
         <div>
           <p class="category">Computer Vision &amp; Robotics Research · Ongoing</p>
           <h2 id="suncompass-title">SunCompass</h2>
@@ -230,7 +242,9 @@ img { display: block; max-width: 100%; height: auto; }
             Each camera estimates where the sun is relative to its own view. Comparing those estimates gives an estimate of how far apart the cameras point horizontally.
           </figcaption>
         </figure>
+        <span class="toggle-hint" id="suncompass-toggle-label">Click to expand</span>
       </div>
+      <div class="project-details" id="suncompass-details" hidden>
 
       <div class="study">
         <h3>The research challenge</h3>
@@ -267,10 +281,12 @@ img { display: block; max-width: 100%; height: auto; }
           <p><strong>Future goal.</strong> Test whether better sun-direction estimates improve camera-to-camera orientation.</p>
         </div>
       </div>
+      </div>
     </section>
 
     <section class="case daedalus" id="daedalus" aria-labelledby="daedalus-title">
       <div class="case-head">
+        <button class="project-toggle" type="button" aria-expanded="false" aria-controls="daedalus-details" aria-labelledby="daedalus-title daedalus-toggle-label"></button>
         <div>
           <p class="category">AI Systems · Personal Project</p>
           <h2 id="daedalus-title">Daedalus</h2>
@@ -291,7 +307,9 @@ img { display: block; max-width: 100%; height: auto; }
             Each pass should leave a record of what it tried and what the next pass should change.
           </figcaption>
         </figure>
+        <span class="toggle-hint" id="daedalus-toggle-label">Click to expand</span>
       </div>
+      <div class="project-details" id="daedalus-details" hidden>
 
       <div class="study">
         <h3>How the idea changed</h3>
@@ -323,15 +341,19 @@ img { display: block; max-width: 100%; height: auto; }
           <p>What interests me is what happens on the next pass. If a rule fails, can Daedalus trace the result back to the original idea, revise it, and design a better test? The prototype already includes a small paper-trading workbench with synthetic data. The continuous research and paper-trading cycle is the goal for a future build.</p>
         </div>
       </div>
+      </div>
     </section>
 
   </div>
 
   <section class="about" id="about" aria-labelledby="about-title">
-    <div class="section-top"><h2 id="about-title">About</h2></div>
+    <div class="section-top">
+      <h2 id="about-title">About</h2>
+      <img class="profile-photo" src="assets/joshua-scott.jpg" alt="Joshua Scott" width="768" height="1024" loading="lazy">
+    </div>
     <div class="about-copy">
       <p>I’m pursuing the M.S. in Technology Innovation on the Robotics track at the University of Washington. I’m interested in how robots use cameras to orient themselves outdoors and how to design experiments that show where those systems break down.</p>
-      <p>At NVIDIA, I supported robotics and VR research teams in Seattle, ran site 3D printing, and collaborated with researchers on prototyping.</p>
+      <p>My background brings together hands-on prototyping, support for robotics and VR research, and software development. I enjoy moving between physical systems and code: making a prototype, testing an idea, and building the tools to understand what happened.</p>
     </div>
   </section>
 </main>
@@ -339,5 +361,15 @@ img { display: block; max-width: 100%; height: auto; }
   <span>Joshua Scott · Seattle, WA</span>
   <a href="#top">Back to top ↑</a>
 </footer>
+<script>
+document.querySelectorAll('.project-toggle').forEach((button) => {
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(expanded));
+    document.getElementById(button.getAttribute('aria-controls')).hidden = !expanded;
+    document.getElementById(button.getAttribute('aria-controls').replace('-details', '-toggle-label')).textContent = expanded ? 'Click to collapse' : 'Click to expand';
+  });
+});
+</script>
 </body>
 </html>
