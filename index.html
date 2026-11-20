@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Joshua Scott's technical portfolio, featuring SunCompass computer vision research and Daedalus local AI infrastructure.">
+<meta name="description" content="Joshua Scott's technical portfolio, featuring SunCompass computer vision research and Daedalus, a local autonomous system builder.">
 <title>Joshua Scott · Robotics and AI</title>
 <style>
 :root {
@@ -55,15 +55,13 @@ img { display: block; max-width: 100%; height: auto; }
 .category { font-size: .85rem; font-weight: 650; }
 .daedalus .category { color: #92e0d9; }
 .case-head h2 { margin: .25rem 0 .7rem; }
-.case-head .summary { font-size: clamp(1rem, 2.1vw, 1.2rem); max-width: 36ch; }
+.case-head .summary { font-size: clamp(1rem, 2.1vw, 1.2rem); max-width: 42ch; font-weight: 650; }
 .daedalus .summary { color: #dceaf3; }
 .case-head a { display: inline-block; color: inherit; margin-top: .95rem; font-weight: 650; }
-.suncompass .case-head .summary { max-width: 42ch; font-weight: 650; }
-.suncompass .purpose { max-width: 44ch; margin-top: .7rem; }
-.sun-reference {
-  background: #fff4d5;
-  padding: clamp(.85rem, 2.7vw, 1.55rem);
-}
+.case-head .purpose { max-width: 44ch; margin-top: .7rem; }
+.project-reference { padding: clamp(.85rem, 2.7vw, 1.55rem); }
+.sun-reference { background: #fff4d5; }
+.daedalus-reference { background: #e3f0f7; color: #15354e; }
 .reference-diagram {
   position: relative;
   isolation: isolate;
@@ -124,24 +122,20 @@ img { display: block; max-width: 100%; height: auto; }
   font-size: .82rem;
   font-weight: 650;
 }
-.sun-reference figcaption {
+.project-reference figcaption {
   margin-top: .7rem;
   padding-top: .7rem;
   border-top: 1px solid #d8bd82;
   font-size: .9rem;
 }
-.sun-reference figcaption strong { display: block; }
+.project-reference figcaption strong { display: block; }
+.daedalus-reference figcaption { border-color: #afcbd8; }
 .project-role { max-width: 77ch; color: var(--muted); margin: 1.15rem 0; }
-.study { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: start; gap: 1.2rem 2.7rem; padding-block: 1.35rem; border-top: 1px solid var(--line); }
-.study h3 { margin-bottom: .6rem; }
+.study { display: grid; grid-template-columns: minmax(0, .4fr) minmax(0, 1fr); align-items: start; gap: 1.2rem 2.7rem; padding-block: 1.35rem; border-top: 1px solid var(--line); }
+.study h3 { margin-bottom: 0; }
 .study p + p, .about-copy p + p { margin-top: .72rem; }
 .study p, .about-copy { max-width: 70ch; }
-.daedalus .study { grid-template-columns: minmax(0, 77ch); }
-.suncompass .study {
-  grid-template-columns: minmax(0, .4fr) minmax(0, 1fr);
-}
-.suncompass .study h3 { margin-bottom: 0; }
-.suncompass .project-role { margin: 0 0 1rem; }
+.study .project-role { margin: 0 0 1rem; }
 .experiment + .experiment { margin-top: 1.3rem; }
 .experiment h4 { margin: 0 0 .35rem; font-size: 1rem; }
 .experiment details {
@@ -160,18 +154,18 @@ img { display: block; max-width: 100%; height: auto; }
   cursor: pointer;
 }
 .experiment details p { padding-bottom: .75rem; font-size: .9rem; }
-.system { margin: 0; padding-left: 1.15rem; border-left: 2px solid #7fcfcf; }
-.system div { padding: .47rem 0; }
-.system dt { position: relative; font-weight: 700; }
-.system dt::before { content: ""; position: absolute; left: calc(-1.15rem - 5px); top: .58em; width: 8px; height: 8px; background: #92e0d9; border-radius: 50%; }
-.system dd { margin: .1rem 0 0; color: #dceaf3; font-size: .88rem; }
+.design-loop { padding: 1.1rem 0 .3rem; }
+.loop-steps { display: flex; justify-content: space-between; align-items: center; gap: .15rem; list-style: none; padding: 0; margin: 0; font-size: .875rem; font-weight: 650; }
+.loop-steps li { display: flex; align-items: center; gap: .15rem; }
+.loop-steps li:not(:last-child)::after { content: "→"; color: var(--teal); margin-left: clamp(0rem, .6vw, .4rem); }
+.loop-return { display: block; width: 100%; height: 2.5rem; color: var(--teal); }
 .about { display: grid; grid-template-columns: minmax(8rem, .4fr) minmax(0, 1fr); gap: 1rem 2.5rem; margin-top: clamp(2.1rem, 5vw, 4rem); padding-block: clamp(1.65rem, 4vw, 2.8rem); border-block: 1px solid var(--line); }
 .about h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
 .footer { padding-block: 1.15rem; color: var(--muted); font-size: .85rem; }
 @media (max-width: 720px) {
-  .hero, .case-head, .study, .suncompass .study, .about { grid-template-columns: minmax(0, 1fr); }
+  .hero, .case-head, .study, .about { grid-template-columns: minmax(0, 1fr); }
   .contact { justify-self: start; }
-  .suncompass .study { gap: .7rem; }
+  .study { gap: .7rem; }
 }
 @media (max-width: 630px) {
   .topbar { gap: 0 1rem; }
@@ -201,7 +195,7 @@ img { display: block; max-width: 100%; height: auto; }
   <section class="hero" aria-labelledby="name">
     <div>
       <h1 id="name">Joshua Scott</h1>
-      <p class="lead">I’m a University of Washington robotics graduate student working on camera orientation from outdoor images and building tools to inspect local AI assistants.</p>
+      <p class="lead">I’m a University of Washington robotics graduate student working on camera orientation from outdoor images and designing a local AI system for long-running tasks.</p>
     </div>
     <div class="contact">
       <p>Seeking a Summer 2027 robotics internship</p>
@@ -220,7 +214,7 @@ img { display: block; max-width: 100%; height: auto; }
           <p class="purpose">Outdoor cameras can face different directions and share no landmarks. SunCompass explores whether the sun can give robots another way to tell how their cameras are oriented.</p>
           <a href="https://github.com/suncompass-org/suncompass">View SunCompass on GitHub <span aria-hidden="true">↗</span></a>
         </div>
-        <figure class="sun-reference">
+        <figure class="project-reference sun-reference">
           <div class="reference-diagram" aria-hidden="true">
             <span class="camera-view"></span>
             <span class="camera-view right"></span>
@@ -278,22 +272,55 @@ img { display: block; max-width: 100%; height: auto; }
     <section class="case daedalus" id="daedalus" aria-labelledby="daedalus-title">
       <div class="case-head">
         <div>
-          <p class="category">Local AI infrastructure</p>
+          <p class="category">AI Systems · Personal Project</p>
           <h2 id="daedalus-title">Daedalus</h2>
-          <p class="summary">A local-first assistant that lets operators inspect its memory, tool decisions, and approved actions.</p>
+          <p class="summary">I want to give a local AI system a task that takes months and have it pick up tomorrow where it left off today.</p>
+          <p class="purpose">Daedalus is my design for an autonomous system builder. I want it to coordinate specialized models, research a problem, and build tools as the work demands. Over time, it should be able to test improvements to its own workflow while I can still inspect, interrupt, or reverse a change.</p>
         </div>
-        <dl class="system">
-          <div><dt>Project memory</dt><dd>Versioned records scoped to a project.</dd></div>
-          <div><dt>Tool policy</dt><dd>Decisions that explain why a request was allowed or blocked.</dd></div>
-          <div><dt>Execution record</dt><dd>A record of what happened after an approved request.</dd></div>
-        </dl>
+        <figure class="project-reference daedalus-reference">
+          <div class="design-loop" role="img" aria-label="Plan, then Act, then Check, then Revise, and return to Plan.">
+            <ol class="loop-steps" aria-hidden="true">
+              <li>Plan</li><li>Act</li><li>Check</li><li>Revise</li>
+            </ol>
+            <svg class="loop-return" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <path d="M 370 4 V 28 H 20 V 4 M 15 10 L 20 4 L 25 10" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+            </svg>
+          </div>
+          <figcaption>
+            <strong>How I want Daedalus to work.</strong>
+            Each pass should leave a record of what it tried and what the next pass should change.
+          </figcaption>
+        </figure>
       </div>
-      <p class="project-role">Personal prototype. I defined the architecture, directed AI-assisted implementation, and evaluated memory retrieval and access boundaries.</p>
+
       <div class="study">
+        <h3>How the idea changed</h3>
         <div>
-          <h3>Making assistant behavior inspectable</h3>
-          <p>Daedalus started as a chat interface for Ollama. I expanded it to let operators inspect what the assistant remembered for a project, why policy allowed or blocked a tool request, and what happened after approval.</p>
-          <p>I evaluated cross-chat retrieval, conflicting preferences, and project access boundaries. Failures informed revisions to how the assistant manages state. The project paused after verifying a release profile that can inspect existing state and blocks tool dispatch, process launches, file writes, and external delivery.</p>
+          <p>In fall 2025, I wanted to build a “council” of language models I could run at home. I’d give them a hard problem, let them challenge each other’s answers, and see whether together they could reason as well as a frontier model. As frontier models kept pulling ahead, I started to care more about a different question. What could a group of smaller models accomplish if each had a specific job, access to tools, and time to keep working?</p>
+          <p>In early 2026, I redesigned Daedalus around that idea. I kept a place for debate where a second opinion would help. Other jobs called for different kinds of models or ordinary code. The ambition grew from answering one difficult question to carrying a project through days, months, or even years of work.</p>
+        </div>
+      </div>
+
+      <div class="study">
+        <h3>What I built and learned</h3>
+        <div>
+          <p class="project-role">I designed the architecture, directed AI-assisted implementation, and tested how the prototype handled memory and tool permissions.</p>
+          <div class="experiment">
+            <h4>Remembering which instruction still applies</h4>
+            <p>A preference I set in one conversation might change in the next, or apply to only one project. Testing those cases taught me that recalling both instructions solves only half the problem. The system also needs a way to decide which one governs the next step. I built project-scoped, versioned memory so I could inspect that choice and trace it back to its source.</p>
+          </div>
+          <div class="experiment">
+            <h4>Following a tool request from decision to outcome</h4>
+            <p>An approval tells me a tool was allowed to run. If I come back a week later, I also need to know whether it ran and what happened. I built separate records for the permission decision and the outcome. Development paused with a prototype that lets me inspect those records. That work gave me a concrete requirement for longer runs: I need to be able to reconstruct what happened before I can trust the system to take the next step.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="study">
+        <h3>First planned application</h3>
+        <div>
+          <p>The first job I’d give Daedalus is to build and test trading strategies continuously. Take an earnings surprise: do other stocks in the same industry tend to react later? One model could propose a rule, another could challenge its assumptions, and a simulator could replay historical data using only what was known at each decision. A promising rule could then move into equities paper trading on a platform such as Webull.</p>
+          <p>What interests me is what happens on the next pass. If a rule fails, can Daedalus trace the result back to the original idea, revise it, and design a better test? The prototype already includes a small paper-trading workbench with synthetic data. The continuous research and paper-trading cycle is the goal for a future build.</p>
         </div>
       </div>
     </section>
